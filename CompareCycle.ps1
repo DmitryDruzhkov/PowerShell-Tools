@@ -1,18 +1,3 @@
-1. Цель исследования:
-	a. Определить оптимальный способ выборки данных циклом из массива объектов
-2. Данные:
-	a. В качестве данных мы будем использовать рабочие процессы списка
-	b. Мы будем запрашивать "Зависшие" рабочие процессы, т.е. находящиеся в стадии "Running" и "Faulting"
-	c. Сравнивать будем через побитное сравнение, в нашем случае "Running" и "Faulting" будут равны "66" http://chrissyblanco.blogspot.ru/2008/05/checking-if-workflow-is-running-on-item.html
-	c. Искать WorkFlows будем через побитное сравнение, в нашем случае "Running" и "Faulting" будут равны "66"
-3. Исследуемые циклы:
-	a. Foreach
-	b. Foreach-Object
-	c. Where
-	d. Where-Object
-	e. For
-4. Скрипт исслдования:
-
 #Задаём пустые массивы для хранения WorkFlows
 [array]$wfCollection_ForeachObj = $null;
 [array]$wfCollection_Foreach = $null;
@@ -99,19 +84,3 @@ Write-Host($ForeachObj);
 Write-Host($forch);
 write-host($for);
 Write-Host("Итог?");
-
-5. Результат:
-
-@{Type=Where-Object; Time_ms=4907,43; Count=46}
-@{Type=Where; Time_ms=4816,5761; Count=46}
-@{Type=ForEach-Object; Time_ms=4380,87; Count=46}
-@{Type=ForEach; Time_ms=1289,9832; Count=46}
-@{Type=For; Time_ms=1271,6611; Count=46}
-
-6. Вывод:
-	a. Как мы видим по результатам работы скрипта, наиболее быстрыми циклами являются For и ForEach
-	b. Несмотря на это, каждый из циклов имеет свои особенности, которые необходимо учитывать для конкретной задачи
-	
-7. Полезные ссылки:
-	a. Checking if a Workflow is Running on an Item/SPWorkflowState http://chrissyblanco.blogspot.ru/2008/05/checking-if-workflow-is-running-on-item.html
-	b. Getting to Know ForEach and ForEach-Object https://blogs.technet.microsoft.com/heyscriptingguy/2014/07/08/getting-to-know-foreach-and-foreach-object/
