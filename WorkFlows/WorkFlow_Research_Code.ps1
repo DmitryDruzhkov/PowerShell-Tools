@@ -1,4 +1,4 @@
-#Выборка рабочих процессов по всем элементам списка
+#Выборка рабочих процессов по всем элементам списка 
 Foreach($item In $itemListColletcion)
 {
 	Foreach($workflow in $item.Workflows)
